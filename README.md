@@ -1,6 +1,6 @@
 # Leadwalnut Seo Audit Report
 
-A simple app template for building web apps with Next.js, React, TypeScript, Tailwind CSS, and more.
+Our project is a comprehensive SEO audit tool designed to streamline and enhance the SEO reporting process.
 
 ## Technologies
 
