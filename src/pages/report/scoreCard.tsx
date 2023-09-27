@@ -19,7 +19,7 @@ interface ScoreCardProps {
   companyData?: ResponseData;
 }
 
-export function ScoreCard({ responseData, companyData }: ScoreCardProps) {
+export default function ScoreCard({ responseData, companyData }: ScoreCardProps) {
   return (
     <>
       <h2 className="font-bold md:text-xl lg:text-4xl">SEO scorecard</h2>
