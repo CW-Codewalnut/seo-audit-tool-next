@@ -7,14 +7,14 @@ import { Footer } from "@/components/atoms/Footer/Footer";
 import { Header } from "@/components/atoms/Header/Header";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
-import { technicalTerms } from "@/utils/Constants/constants";
+import { technicalTerms } from "@/Constants/constants";
 import { DownloadPDF, TableData } from "@/utils/api/airtableEndPoints";
 import { ScoreCard, ResponseData } from "./scoreCard";
 
 export default function Report() {
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<ResponseData[]>();
-  const [companyData, setCompanyData] = useState({});
+  const [companyData, setCompanyData] = useState<ResponseData>();
 
   useEffect(() => {
     TableData()

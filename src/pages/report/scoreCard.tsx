@@ -1,8 +1,8 @@
 import React from "react";
 import { ReportTable } from "@/components/molecules/ReportTable/ReportTable";
-import { arrayOfTags } from "@/utils/Constants/constants";
+import { arrayOfTags } from "@/Constants/constants";
 
-export type RecordFields = {
+type RecordFields = {
   yourScore?: string | number;
   yourCompiteiter1?: string | number;
   yourCompiteiter2?: string | number;
@@ -15,8 +15,8 @@ export interface ResponseData {
 }
 
 interface ScoreCardProps {
-  responseData?: ResponseData[];
-  companyData: any;
+  responseData: ResponseData[];
+  companyData?: ResponseData;
 }
 
 export function ScoreCard({ responseData, companyData }: ScoreCardProps) {
@@ -31,26 +31,26 @@ export function ScoreCard({ responseData, companyData }: ScoreCardProps) {
               <td>{companyData.fields.yourScore}</td>
             )}
             {companyData?.fields?.yourCompiteiter1 && (
-              <td>{companyData?.fields?.yourCompiteiter1}</td>
+              <td>{companyData.fields.yourCompiteiter1}</td>
             )}
             {companyData?.fields?.yourCompiteiter2 && (
-              <td>{companyData?.fields?.yourCompiteiter2}</td>
+              <td>{companyData.fields.yourCompiteiter2}</td>
             )}
           </tr>
         </tbody>
       </table>
       {arrayOfTags.map((tag) => {
         const tableBody = responseData?.filter(
-          (item) => item.fields.Tags[0].trim() === tag,
+          (item) => item?.fields?.Tags[0].trim() === tag,
         );
 
         const tableHeader = tableBody?.find(
-          (item) => item.fields.Name.trim() === tag,
+          (item) => item?.fields?.Name.trim() === tag,
         );
 
         return (
           <table className="mt-2 md:mt-5">
-            <tbody>
+            <thead>
               <tr>
                 <td className="bg-[#0f2a3d] text-white">
                   {tableHeader?.fields?.Name}
@@ -65,12 +65,13 @@ export function ScoreCard({ responseData, companyData }: ScoreCardProps) {
                   <td style={{ backgroundColor: "rgb(15, 42, 61)" }} />
                 )}
               </tr>
+            </thead>
               <ReportTable
                 tableHeader={tableHeader?.fields?.Name}
                 tableBody={tableBody}
                 tag={tag}
               />
-            </tbody>
+            
           </table>
         );
       })}

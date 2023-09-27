@@ -1,4 +1,4 @@
-# CodeWalnut's New App Template.
+# Leadwalnut Seo Audit Report
 
 A simple app template for building web apps with Next.js, React, TypeScript, Tailwind CSS, and more.
 
@@ -32,7 +32,6 @@ A simple app template for building web apps with Next.js, React, TypeScript, Tai
 
 - [Prettier](https://prettier.io/) - for formatting. Prettier is a code formatter that automatically formats JavaScript code.
 
-- [Husky](https://typicode.github.io/husky/#/) - for running pre-commit hooks. Husky is a tool that allows for running scripts before or after git commands.
 
 ### Utilities
 
@@ -44,7 +43,7 @@ A simple app template for building web apps with Next.js, React, TypeScript, Tai
 
 ---
 
-First, install the app dependancies:
+First, install the app dependencies:
 
 ```
 npm install
@@ -86,10 +85,10 @@ npm run test:watch
 
 ```
 - public
--- assets
+-- img
 ```
 
-The public folder contains static assets that are used by the app. The assets folder contains images and other assets that are used by the app. These assets are copied to the dist folder when the app is built.
+The public folder contains img that are used by the app. These img are copied to the dist folder when the app is built.
 
 We want to keep as many assets as possible in the public folder, so that they can be cached by the browser. This will improve the performance of the app.
 
@@ -100,10 +99,7 @@ We want to keep as many assets as possible in the public folder, so that they ca
 -- components
 --- atoms
 --- molecules
---- organisms
 -- constants
--- contexts
--- hooks
 -- pages
 -- styles
 -- utils
@@ -118,18 +114,6 @@ The components folder contains the components that make up the UI of our app. Co
 ### `/constants` folder
 
 The constants folder contains constants that are used by the app. This includes constants for the app's theme, colors, and API endpoints.
-
-### `/contexts` folder
-
-The contexts folder contains React contexts that are used by the app. Contexts are used to share data between components without having to pass props down the component tree. Contexts are also used to share data between components that are not related to each other.
-
-It is not recommended to use contexts for data that is only used by a single component. Instead, it is recommended to use the [React state hook](https://reactjs.org/docs/hooks-state.html) to manage state for a single component.
-
-We can always change to a more complex state management library later if we feel that we need it.
-
-### `/hooks` folder
-
-The hooks folder contains custom React hooks that are used by the app. Hooks are functions that contain lifecycle logic that can be used by components. Hooks are also a great way to share logic between components.
 
 ### `/pages` folder
 

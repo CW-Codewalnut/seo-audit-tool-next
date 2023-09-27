@@ -1,4 +1,4 @@
-import { colors } from "@/utils/Constants/constants";
+import { colors } from "@/Constants/constants";
 import { ColorBasedOnValue } from "./ColorBasedOnValue";
 
 describe("ColorBasedOnValue", () => {
