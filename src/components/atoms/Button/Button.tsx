@@ -13,7 +13,6 @@ export interface ButtonProps {
   children?: ReactNode;
   leadingIconAlt?: string;
   trailingIconAlt?: string;
-  type?: "button" | "submit" | "reset";
   disabled?: boolean;
 }
 
@@ -26,7 +25,6 @@ export function Button({
   trailingIconAlt,
   className,
   onClick,
-  type = "button",
   disabled = false,
 }: ButtonProps) {
   const buttonClasses = clsx(className, {
@@ -44,7 +42,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       className={buttonClasses}
-      type={type}
+      type="button"
     >
       {!!leadingIcon && !disabled && (
         <span className={`relative h-6 w-6 peer-[]:mr-2 ${iconDynamicClasses}`}>

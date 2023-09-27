@@ -75,7 +75,6 @@ export default function Report() {
           <Spinner />
         )}
         <Button
-          type="button"
           className="my-3 mx-2.5 md:my-5 md:mx-0"
           onClick={handleDownloadPdf}
           trailingIcon="img/download-icon.svg"
