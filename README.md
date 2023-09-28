@@ -1,6 +1,6 @@
-# Leadwalnut Seo Audit Report
+# Seo Audit Report
 
-Our project is a comprehensive SEO audit tool designed to streamline and enhance the SEO reporting process.
+Codewalnut leads an open-source project offering a high-quality Next.js boilerplate. It's accessible for developers to use and customize as per their needs.
 
 ## Technologies
 
@@ -16,15 +16,13 @@ Our project is a comprehensive SEO audit tool designed to streamline and enhance
 
 - [Tailwind CSS](https://tailwindcss.com/) - for styling. Tailwind is a utility-first CSS framework that provides a number of base styles and utility classes that can be used to build custom styles. It also provides a number of plugins that can be used to extend the base styles.
 
-- [Saas](https://sass-lang.com/) - for advanced styling. Sass is a CSS preprocessor that allows for more advanced styling, including keyframe animations and targeting specific elements.
+- [Sass](https://sass-lang.com/) - for advanced styling. Sass is a CSS preprocessor that allows for more advanced styling, including keyframe animations and targeting specific elements.
 
 ### Testing
 
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) - for testing. React Testing Library is a testing library that allows for testing React components in a way that closely resembles how the components are used.
 
 - [Jest](https://jestjs.io/) - for running tests. Jest is a JavaScript testing framework that allows for running tests.
-
-- [Cypress](https://www.cypress.io/) - for end-to-end testing. Cypress is an end-to-end testing framework that allows for testing the app as a user would.
 
 ### Linting & Formatting
 
@@ -99,6 +97,7 @@ We want to keep as many assets as possible in the public folder, so that they ca
 -- components
 --- atoms
 --- molecules
+--- organisms
 -- constants
 -- pages
 -- styles
