@@ -16,7 +16,7 @@ export function Banner({ bannerUrl, heading, subHeading }: BannerProps) {
       <h1 className="pt-5 text-center text-xl font-bold text-white lg:text-5xl md:pt-10">
         {heading}
       </h1>
-      <p className="mt-4 text-center text-base font-semibold text-[#78c317] lg:mt-6 lg:text-2xl">
+      <p className="mt-4 text-center text-base font-semibold text-[#78c317] lg:mt-6 lg:text-2xl capitalize">
         {subHeading}
       </p>
     </div>
