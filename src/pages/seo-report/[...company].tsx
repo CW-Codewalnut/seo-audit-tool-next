@@ -19,7 +19,7 @@ export default function Report() {
   const [companyData, setCompanyData] = useState<ResponseData>();
 
   const { company } = router.query;
-
+  const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
   useEffect(() => {
     if (company) {
       TableData(company[0])
@@ -52,7 +52,7 @@ export default function Report() {
           const a = document.createElement("a");
           a.href = url;
           a.download = "seo-audit-report.pdf";
-          a.click();
+          // a.click();
           window.URL.revokeObjectURL(url);
           toast.success("PDF downloaded successfully");
         })
@@ -82,6 +82,7 @@ export default function Report() {
                 companyData={companyData}
               />
             </Card>
+            <a href={`${BACKEND_BASE_URL}/generate-pdf?queryParam1=${company}`}>
             <Button
               className="my-3 mx-2.5 md:my-5 md:mx-0"
               onClick={handleDownloadPdf}
@@ -90,6 +91,7 @@ export default function Report() {
             >
               {isLoading ? <Spinner /> : "Download Report in PDF"}
             </Button>
+            </a>
           </>
         ) : (
           <Spinner />
