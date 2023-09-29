@@ -3,7 +3,7 @@ import React from "react";
 interface BannerProps {
   bannerUrl: string;
   heading: string;
-  subHeading: string;
+  subHeading: string | number;
 }
 
 export function Banner({ bannerUrl, heading, subHeading }: BannerProps) {
