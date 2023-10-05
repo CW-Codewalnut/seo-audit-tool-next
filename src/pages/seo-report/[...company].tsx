@@ -10,6 +10,7 @@ import { Header } from "@/components/atoms/Header/Header";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
 import { DownloadPDF, TableData } from "@/utils/api/airtableEndPoints";
+import { SingleClinetCard } from "./SingleClient";
 import ScoreCard, { ResponseData } from "./scoreCard";
 
 export default function Report() {
@@ -83,14 +84,14 @@ export default function Report() {
               />
             </Card>
             <a href={`${BACKEND_BASE_URL}/generate-pdf?queryParam1=${company}`}>
-            <Button
-              className="my-3 mx-2.5 md:my-5 md:mx-0"
-              onClick={handleDownloadPdf}
-              trailingIcon="/img/download-icon.svg"
-              disabled={isLoading}
-            >
-              {isLoading ? <Spinner /> : "Download Report in PDF"}
-            </Button>
+              <Button
+                className="my-3 mx-2.5 md:my-5 md:mx-0"
+                onClick={handleDownloadPdf}
+                trailingIcon="/img/download-icon.svg"
+                disabled={isLoading}
+              >
+                {isLoading ? <Spinner /> : "Download Report in PDF"}
+              </Button>
             </a>
           </>
         ) : (
@@ -98,6 +99,7 @@ export default function Report() {
         )}
 
         <InfoCard technicalTerms={technicalTerms} />
+        <SingleClinetCard responseData={responseData} />
       </div>
       <Footer />
     </>
