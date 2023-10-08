@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+// import Image from "next/image";
 import { useRouter } from "next/router";
 import { technicalTerms } from "@/Constants/constants";
 import { toast } from "react-toastify";
@@ -9,6 +11,7 @@ import { Footer } from "@/components/atoms/Footer/Footer";
 import { Header } from "@/components/atoms/Header/Header";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
+import { TopSection } from "@/components/molecules/TopSection/TopSection";
 import { DownloadPDF, TableData } from "@/utils/api/airtableEndPoints";
 import { SingleClinetCard } from "./SingleClient";
 import ScoreCard, { ResponseData } from "./scoreCard";
@@ -68,12 +71,27 @@ export default function Report() {
 
   return (
     <>
+      <TopSection />
+      <div className="mx-auto w-full max-w-[1000px]">
+        <SingleClinetCard responseData={responseData} />
+      </div>
+      <div className="mx-auto flex w-full justify-center gap-2">
+        <span className="mb-2 text-lg">Powered by</span>
+        <Image
+          src="/img/img-lw-logo-white-bg.svg"
+          alt="Company logo"
+          width={111}
+          height={45}
+        />
+      </div>
+
       <Header companyLogo="/img/LeadwalnutIcon.svg" altText="Company logo" />
       <Banner
         bannerUrl="/img/banner-image.webp"
         heading="Website health scorecard"
         subHeading={companyData?.fields?.yourScore || ""}
       />
+
       <div className="mx-auto mt-[-220px] md:mt-[-200px] md:w-[100%] lg:w-[80%]">
         {responseData ? (
           <>
@@ -99,7 +117,6 @@ export default function Report() {
         )}
 
         <InfoCard technicalTerms={technicalTerms} />
-        <SingleClinetCard responseData={responseData} />
       </div>
       <Footer />
     </>

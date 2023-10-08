@@ -1,6 +1,7 @@
 import { technicalTerms } from "@/Constants/constants";
 import { BigCard } from "@/components/atoms/BigCard/BigCard";
 import { SmallCard } from "@/components/atoms/SmallCard/SmallCard";
+import { FieldsStyle } from "@/utils/helpers/FieldsStyle/FieldsStyle";
 import { ResponseData } from "./scoreCard";
 
 interface SingleClientProps {
@@ -18,45 +19,75 @@ export function SingleClinetCard({ responseData }: SingleClientProps) {
 
   return (
     <>
-      <div className="border-b-2 border-[#CCD6DD] py-10 ">
+      <div className="border-b-2 border-[#CCD6DD] py-10">
         <p className="px-2 pb-4 text-lg font-medium">Web Set Up</p>
-        <div className="grid max-w-full grid-cols-2 gap-6 md:flex md:flex-wrap">
-          {filterWebSetUp(responseData, "Web Set Up")?.map((item: any) => (
-            <SmallCard
-              key={item.id}
-              title={item.fields.Name}
-              scoreValue={item.fields.yourScore}
-              className="h-[112px] min-w-[146px] flex-col justify-between p-5"
-            />
-          ))}
+        <div className="grid w-full grid-cols-5 gap-8">
+          {filterWebSetUp(responseData, "Web Set Up")?.map((item: any) => {
+            const { backgroundColor, color } = FieldsStyle({
+              item,
+              order: 1,
+              fieldType: "cell",
+              tag: "Web Set Up",
+              subTags: item.fields.Name,
+            });
+            return (
+              <SmallCard
+                key={item.id}
+                title={item.fields.Name}
+                scoreValue={item.fields.yourScore}
+                bgColor={backgroundColor}
+                textColor={color}
+              />
+            );
+          })}
         </div>
       </div>
 
       <div className="border-b-2 border-[#CCD6DD] py-10 ">
         <p className="px-2 pb-4 text-lg font-medium">Web Vitals</p>
-        <div className="grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filterWebSetUp(responseData, "Web Vitals")?.map((item: any) => (
-            <BigCard
-              key={item.id}
-              title={item.fields.Name}
-              scoreValue={item.fields.yourScore}
-            />
-          ))}
+        <div className="grid grid-cols-4 gap-8">
+          {filterWebSetUp(responseData, "Web Vitals")?.map((item) => {
+            const { color } = FieldsStyle({
+              item,
+              order: 1,
+              fieldType: "cell",
+              tag: "Web Vitals",
+              subTags: item.fields.Name,
+            });
+            return (
+              <BigCard
+                key={item.id}
+                title={item.fields.Name}
+                scoreValue={item.fields.yourScore}
+                textColor={color}
+              />
+            );
+          })}
         </div>
       </div>
 
       <div className="border-b-2 border-[#CCD6DD] py-10 ">
         <p className="px-2 pb-4 text-lg font-medium">Meta Data Compliance</p>
-        <div className="grid max-w-full grid-cols-2 gap-6 md:flex md:flex-wrap">
+        <div className="grid w-full grid-cols-5 gap-8">
           {filterWebSetUp(responseData, "Meta Data Compliance")?.map(
-            (item: any) => (
-              <SmallCard
-                key={item.id}
-                title={item.fields.Name}
-                scoreValue={item.fields.yourScore}
-                className="h-[112px] min-w-[146px] flex-col justify-between p-5"
-              />
-            ),
+            (item: any) => {
+              const { backgroundColor, color } = FieldsStyle({
+                item,
+                order: 1,
+                fieldType: "cell",
+                tag: "Meta Data Compliance",
+                subTags: item.fields.Name,
+              });
+              return (
+                <SmallCard
+                  key={item.id}
+                  title={item.fields.Name}
+                  scoreValue={item.fields.yourScore}
+                  bgColor={backgroundColor}
+                  textColor={color}
+                />
+              );
+            },
           )}
         </div>
       </div>
@@ -64,78 +95,104 @@ export function SingleClinetCard({ responseData }: SingleClientProps) {
       <div className="border-b-2 border-[#CCD6DD] py-10 ">
         <p className="px-2 pb-4 text-lg font-medium">Backlink Profile</p>
         <div className="grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filterWebSetUp(responseData, "Backlink Profile")?.map(
-            (item: any) => (
+          {filterWebSetUp(responseData, "Backlink Profile")?.map((item) => {
+            const { color } = FieldsStyle({
+              item,
+              order: 1,
+              fieldType: "cell",
+              tag: "Backlink Profile",
+              subTags: item.fields.Name,
+            });
+            return (
               <BigCard
                 key={item.id}
                 title={item.fields.Name}
                 scoreValue={item.fields.yourScore}
+                textColor={color}
               />
-            ),
-          )}
+            );
+          })}
         </div>
       </div>
 
       <div className="border-b-2 border-[#CCD6DD] py-10 ">
         <p className="px-2 pb-4 text-lg font-medium">Web Performance</p>
-        <div className="grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-          {filterWebSetUp(responseData, "Web Performance")?.map((item: any) => (
-            <SmallCard
-              key={item.id}
-              title={item.fields.Name}
-              scoreValue={item.fields.yourScore}
-              className="w-[300px] justify-between p-6"
-            />
-          ))}
+        <div className="grid grid-cols-3 gap-8">
+          {filterWebSetUp(responseData, "Web Performance")?.map((item: any) => {
+            const { backgroundColor, color } = FieldsStyle({
+              item,
+              order: 1,
+              fieldType: "cell",
+              tag: "Web Performance",
+              subTags: item.fields.Name,
+            });
+            return (
+              <SmallCard
+                key={item.id}
+                title={item.fields.Name}
+                scoreValue={item.fields.yourScore}
+                bgColor={backgroundColor}
+                textColor={color}
+                flex
+              />
+            );
+          })}
         </div>
       </div>
 
       <div className="border-b-2 border-[#CCD6DD] py-10 ">
         <p className="px-2 pb-4 text-lg font-medium">Trust & Authority</p>
-        <div className="grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-3 gap-8">
           {filterWebSetUp(responseData, "Trust & Authority")?.map(
-            (item: any) => (
-              <SmallCard
-                key={item.id}
-                title={item.fields.Name}
-                scoreValue={item.fields.yourScore}
-                className="w-[300px] justify-between p-6"
-              />
-            ),
+            (item: any) => {
+              const { backgroundColor, color } = FieldsStyle({
+                item,
+                order: 1,
+                fieldType: "cell",
+                tag: "Trust & Authority",
+                subTags: item.fields.Name,
+              });
+              return (
+                <SmallCard
+                  key={item.id}
+                  title={item.fields.Name}
+                  scoreValue={item.fields.yourScore}
+                  bgColor={backgroundColor}
+                  textColor={color}
+                  flex
+                />
+              );
+            },
           )}
         </div>
       </div>
 
       <div className="border-b-2 border-[#CCD6DD] py-10 ">
         <p className="px-2 pb-4 text-lg font-medium">Social Channels</p>
-        <div className="grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-          {filterWebSetUp(responseData, "Social Channels")?.map((item: any) => (
-            <SmallCard
-              key={item.id}
-              title={item.fields.Name}
-              scoreValue={item.fields.yourScore}
-              className="w-[300px] justify-between p-6"
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="border-b-2 border-[#CCD6DD] py-10 ">
-        <p className="px-2 pb-4 text-lg font-medium">Backlink Profile</p>
-        <div className="grid max-w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filterWebSetUp(responseData, "Backlink Profile")?.map(
-            (item: any) => (
-              <BigCard
+        <div className="grid grid-cols-3 gap-8">
+          {filterWebSetUp(responseData, "Social Channels")?.map((item: any) => {
+            const { backgroundColor, color } = FieldsStyle({
+              item,
+              order: 1,
+              fieldType: "cell",
+              tag: "Social Channels",
+              subTags: item.fields.Name,
+            });
+            return (
+              <SmallCard
                 key={item.id}
                 title={item.fields.Name}
                 scoreValue={item.fields.yourScore}
+                bgColor={backgroundColor}
+                textColor={color}
+                flex
               />
-            ),
-          )}
+            );
+          })}
         </div>
       </div>
 
-      <div className="mx-2.5 p-2">
+      <div className="my-4">
         <p className="font-medium text-black md:text-xs lg:text-xl">
           Technical compliance
         </p>
