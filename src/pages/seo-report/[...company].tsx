@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-// import Image from "next/image";
 import { useRouter } from "next/router";
-import { technicalTerms } from "@/Constants/constants";
-import { toast } from "react-toastify";
-import { Banner } from "@/components/atoms/Banner/Banner";
-import { Button } from "@/components/atoms/Button/Button";
-import { Card } from "@/components/atoms/Card/Card";
 import { Footer } from "@/components/atoms/Footer/Footer";
 import { Header } from "@/components/atoms/Header/Header";
-import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
-import { TopSection } from "@/components/molecules/TopSection/TopSection";
-import { DownloadPDF, TableData } from "@/utils/api/airtableEndPoints";
-import { SingleClinetCard } from "./SingleClient";
-import ScoreCard, { ResponseData } from "./scoreCard";
+import { TableData } from "@/utils/api/airtableEndPoints";
+import MultiScoreCard, { ResponseData } from "./multiScoreCard";
+import { SingleScoreCard } from "./singleScoreCard";
 
 export default function Report() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<ResponseData[]>();
   const [companyData, setCompanyData] = useState<ResponseData>();
 
@@ -46,78 +36,40 @@ export default function Report() {
     }
   }, [responseData]);
 
-  const handleDownloadPdf = () => {
-    setIsLoading(true);
-    if (company)
-      DownloadPDF(company[0])
-        .then((response) => {
-          const blob = new Blob([response.data], { type: "application/pdf" });
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "seo-audit-report.pdf";
-          // a.click();
-          window.URL.revokeObjectURL(url);
-          toast.success("PDF downloaded successfully");
-        })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.error("Error downloading PDF:", error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-  };
-
   return (
     <>
-      <TopSection />
-      <div className="mx-auto w-full max-w-[1000px]">
-        <SingleClinetCard responseData={responseData} />
-      </div>
-      <div className="mx-auto flex w-full justify-center gap-2">
-        <span className="mb-2 text-lg">Powered by</span>
-        <Image
-          src="/img/img-lw-logo-white-bg.svg"
-          alt="Company logo"
-          width={111}
-          height={45}
-        />
-      </div>
-
       <Header companyLogo="/img/LeadwalnutIcon.svg" altText="Company logo" />
-      <Banner
-        bannerUrl="/img/banner-image.webp"
-        heading="Website health scorecard"
-        subHeading={companyData?.fields?.yourScore || ""}
-      />
+      {responseData ? (
+        <>
+          {companyData?.fields?.yourCompiteiter1 ? (
+            <MultiScoreCard
+              responseData={responseData}
+              companyData={companyData}
+            />
+          ) : (
+            <SingleScoreCard responseData={responseData} />
+          )}
 
-      <div className="mx-auto mt-[-220px] md:mt-[-200px] md:w-[100%] lg:w-[80%]">
-        {responseData ? (
-          <>
-            <Card>
-              <ScoreCard
-                responseData={responseData}
-                companyData={companyData}
+          {company && (
+            <a
+              href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`}
+              target="_blank"
+              className="mx-auto my-5 flex w-fit justify-center rounded-xl bg-[#78C317] py-2 px-5 font-semibold text-white hover:bg-[#5A960C]"
+              rel="noreferrer"
+            >
+              Download Report in PDF{" "}
+              <img
+                src="/img/download-icon.svg"
+                alt="download icon"
+                className="ml-3"
               />
-            </Card>
-            <a href={`${BACKEND_BASE_URL}/generate-pdf?queryParam1=${company}`}>
-              <Button
-                className="my-3 mx-2.5 md:my-5 md:mx-0"
-                onClick={handleDownloadPdf}
-                trailingIcon="/img/download-icon.svg"
-                disabled={isLoading}
-              >
-                {isLoading ? <Spinner /> : "Download Report in PDF"}
-              </Button>
             </a>
-          </>
-        ) : (
-          <Spinner />
-        )}
+          )}
+        </>
+      ) : (
+        <Spinner />
+      )}
 
-        <InfoCard technicalTerms={technicalTerms} />
-      </div>
       <Footer />
     </>
   );

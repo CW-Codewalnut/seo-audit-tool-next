@@ -1,38 +1,44 @@
-import Image from "next/image";
+import DoughnutChart from "@/components/atoms/DoughnutChart/DoughnutChart";
 
 export function TopSection() {
+
+  const chartData = {
+    labels: ['Red', 'white'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [50],
+        backgroundColor: [
+          '#FFBE00',
+          '#E9F0F5',
+        ],
+        borderColor: [
+          '#FFBE00',
+          '#E9F0F5',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   return (
-    <div className="mx-auto w-full max-w-[1000px] mt-10">
-      <article className="lg:flex-colX mx-auto flex flex-row">
-        <div className="flex flex-1 gap-10">
-          <Image
-            src="/img/akasa_logo.png"
-            alt="Company logo"
-            width={65}
-            height={10}
-            className="h-16 rounded-md"
-          />
-          <div className="flex max-w-[266px] flex-col gap-2">
-            <span className="-mt-1 text-lg font-medium text-[#5A6F7D]">
-              Akasa Air
-            </span>
-            <h4 className="text-base font-bold lg:text-4xl">
-              Website health scoreCard
-            </h4>
+    <div className="py-10 bg-white">
+      <div className="flex gap-5 w-[70%] mx-auto justify-between">       
+        <div className="flex gap-5 ">
+          <img src="/img/akasa_logo.png" alt="" className="rounded-lg w-16 h-16"/>
+          <div>
+            <h1 className="text-sm font-semibold">Akasa Air</h1>
+            <h2 className="text-xl font-bold">Website<br/> health scorecard</h2>
           </div>
         </div>
-        <div className="flex flex-1 gap-12">
-          <div className="">Cricel</div>
-          <div className="flex flex-col justify-center">
-            <span className="text-sm font-medium lg:text-base ">
-              Overall Performance
-            </span>
-            <span className="text-sm font-medium lg:text-base ">
-              As on 22 Sep’23
-            </span>
+        <div className="flex gap-5 items-center">
+          <DoughnutChart data={chartData} />
+          <div>
+            <p>Overall<br/>Performance</p>
+            <p>As on 09 Oct 23</p>
           </div>
         </div>
-      </article>
+      </div>
     </div>
   );
 }
