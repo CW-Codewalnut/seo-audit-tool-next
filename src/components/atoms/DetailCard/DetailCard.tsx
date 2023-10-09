@@ -23,15 +23,15 @@ export function DetailCard(props: SmallCardProps) {
   } = props;
 
   const cardClasses = clsx(
-    "p-6 rounded-tl-[20px] rounded-br-[20px] font-medium rounded-tr-md rounded-bl-md drop-shadow-lg bg-neutral-50 border border-solid gap-5",
+    "p-6 rounded-tl-[20px] rounded-br-[20px] font-medium rounded-tr-md rounded-bl-md drop-shadow-lg bg-neutral-50 border border-solid md:gap-5",
     className,
     {
-      "flex flex-row font-light text-base justify-between": flex,
+      "md:flex flex-row font-light text-base justify-between": flex,
       "flex flex-col": !flex,
     }
   );
 
-  const colorStyle = {
+  const bgColorStyle = {
     backgroundColor: bgColor,
   };
 
@@ -43,10 +43,10 @@ export function DetailCard(props: SmallCardProps) {
     <article className={cardClasses}>
       {tag !== "Web Vitals" && tag !== "Backlink Profile" ? (
         <>
-          <p className="text-sm lg:text-lg">{title}</p>
+          <p className="text-sm lg:text-lg pb-5 md:pb-0">{title}</p>
           <div
             className="flex h-7 w-fit items-center rounded-xl px-2 font-medium"
-            style={colorStyle}
+            style={bgColorStyle}
           >
             <div
               className="mr-2 h-2.5 w-2.5 rounded-full font-medium"
