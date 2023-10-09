@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-interface SmallCardProps {
+interface DetailCardProps {
   className?: string;
   tag: string;
   title: string;
@@ -11,7 +11,7 @@ interface SmallCardProps {
   textColor?: string;
 }
 
-export function DetailCard(props: SmallCardProps) {
+export function DetailCard(props: DetailCardProps) {
   const {
     className,
     tag,

@@ -1,7 +1,7 @@
 import { arrayOfTags, technicalTerms } from "@/Constants/constants";
 import { DetailCard } from "@/components/atoms/DetailCard/DetailCard";
 import { FieldsStyle } from "@/utils/helpers/FieldsStyle/FieldsStyle";
-import { TopSection } from "@/components/molecules/TopSection/TopSection";
+import { SingleClientHeader } from "@/components/molecules/SingleClientHeader/SingleClientHeader";
 import { ResponseData } from "./multiScoreCard";
 
 interface SingleClientProps {
@@ -19,7 +19,7 @@ export function SingleScoreCard({ responseData }: SingleClientProps) {
 
   return (
     <>
-    <TopSection />
+    <SingleClientHeader />
     <div className="mx-auto w-[90%] md:w-[70%]">
       {arrayOfTags.map((tag: string) => (
         <div className="border-b-2 border-[#CCD6DD] py-10 ">
