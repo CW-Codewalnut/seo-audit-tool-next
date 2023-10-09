@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { technicalTerms } from "@/Constants/constants";
-import { Banner } from "@/components/atoms/Banner/Banner";
-import { Card } from "@/components/atoms/Card/Card";
 import { Footer } from "@/components/atoms/Footer/Footer";
 import { Header } from "@/components/atoms/Header/Header";
-import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
 import { TableData } from "@/utils/api/airtableEndPoints";
-import ScoreCard, { ResponseData } from "./scoreCard";
+import MultiScoreCard, { ResponseData } from "./multiScoreCard";
+import { SingleScoreCard } from "./singleScoreCard";
 
 export default function Report() {
   const router = useRouter();
@@ -43,33 +40,37 @@ export default function Report() {
   return (
     <>
       <Header companyLogo="/img/LeadwalnutIcon.svg" altText="Company logo" />
-      <Banner
-        bannerUrl="/img/banner-image.webp"
-        heading="Website health scorecard"
-        subHeading={companyData?.fields?.yourScore || ""}
-      />
-      <div className="mx-auto mt-[-220px] md:mt-[-200px] md:w-[100%] lg:w-[80%]">
-        {responseData ? (
-          <>
-            <Card>
-              <ScoreCard
-                responseData={responseData}
-                companyData={companyData}
-              />
-            </Card>
-            {
-              company && <a href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`} target="_blank" className="flex font-semibold justify-center bg-[#78C317] text-white py-2 px-5 rounded-xl hover:bg-[#5A960C] w-fit mt-5" rel="noreferrer">
-              Download Report in PDF <img src="/img/download-icon.svg" alt="download icon" className="ml-3" />
-            </a>
-            }
-            
-          </>
-        ) : (
-          <Spinner />
-        )}
+      {responseData ? (
+        <>
+          {companyData?.fields?.yourCompiteiter1 ? (
+            <MultiScoreCard
+              responseData={responseData}
+              companyData={companyData}
+            />
+          ) : (
+            <SingleScoreCard responseData={responseData} />
+          )}
 
-        <InfoCard technicalTerms={technicalTerms} />
-      </div>
+          {company && (
+            <a
+              href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`}
+              target="_blank"
+              className="mx-auto my-5 flex w-fit justify-center rounded-xl bg-[#78C317] py-2 px-5 font-semibold text-white hover:bg-[#5A960C]"
+              rel="noreferrer"
+            >
+              Download Report in PDF{" "}
+              <img
+                src="/img/download-icon.svg"
+                alt="download icon"
+                className="ml-3"
+              />
+            </a>
+          )}
+        </>
+      ) : (
+        <Spinner />
+      )}
+
       <Footer />
     </>
   );

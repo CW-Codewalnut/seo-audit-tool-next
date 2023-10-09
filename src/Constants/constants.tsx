@@ -28,7 +28,7 @@ export const arrayOfTags = [
   "Backlink Profile",
   "Web Performance",
   "Trust & Authority",
-  "Social Proofing",
+  "Social Channels",
 ];
 
 export const technicalTerms = [
