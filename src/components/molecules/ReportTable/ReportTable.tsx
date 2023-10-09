@@ -12,10 +12,11 @@ export type RecordFields = {
 export interface ResponseData {
   id: string;
   fields: RecordFields;
+  createdTime?: string;
 }
 export interface ReportTableProps {
   tableHeader?: string;
-  tableBody: ResponseData[];
+  tableBody: (ResponseData | Partial<ResponseData>)[];
   tag: string;
 }
 
@@ -67,5 +68,5 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
           </tr>
         ))}
     </tbody>
-  )
+  );
 }
