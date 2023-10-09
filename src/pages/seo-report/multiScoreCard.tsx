@@ -33,7 +33,7 @@ export default function MultiScoreCard({
         heading="Website health scorecard"
         subHeading={companyData?.fields?.yourScore || ""}
       />
-      <Card className="mt-[-220px] md:mt-[-200px] md:w-[100%] lg:w-[70%] mx-auto">
+      <Card className="mt-[-220px] md:mt-[-200px] md:w-[100%] lg:w-[80%] mx-auto">
         <h2 className="font-bold md:text-xl lg:text-4xl">SEO scorecard</h2>
         <table>
           <tbody>
