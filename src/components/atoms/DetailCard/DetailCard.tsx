@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-interface DetailCardProps {
+export interface DetailCardProps {
   className?: string;
   tag: string;
   title: string;
@@ -11,24 +11,22 @@ interface DetailCardProps {
   textColor?: string;
 }
 
-export function DetailCard(props: DetailCardProps) {
-  const {
-    className,
-    tag,
-    title,
-    scoreValue,
-    flex,
-    bgColor,
-    textColor,
-  } = props;
-
+export function DetailCard({
+  className,
+  tag,
+  title,
+  scoreValue,
+  flex,
+  bgColor,
+  textColor,
+}: DetailCardProps) {
   const cardClasses = clsx(
     "p-6 rounded-tl-[20px] rounded-br-[20px] font-medium rounded-tr-md rounded-bl-md drop-shadow-lg bg-neutral-50 border border-solid md:gap-5",
     className,
     {
       "md:flex flex-row font-light text-base justify-between": flex,
       "flex flex-col": !flex,
-    }
+    },
   );
 
   const bgColorStyle = {
@@ -43,7 +41,7 @@ export function DetailCard(props: DetailCardProps) {
     <article className={cardClasses}>
       {tag !== "Web Vitals" && tag !== "Backlink Profile" ? (
         <>
-          <p className="text-sm lg:text-lg pb-5 md:pb-0">{title}</p>
+          <p className="pb-5 text-sm md:pb-0 lg:text-lg">{title}</p>
           <div
             className="flex h-7 w-fit items-center rounded-xl px-2 font-medium"
             style={bgColorStyle}
@@ -57,8 +55,13 @@ export function DetailCard(props: DetailCardProps) {
         </>
       ) : (
         <>
-          <span className="text-base font-extralight md:text-base relative h-[100px]">{title}</span>
-          <div className="text-5xl font-bold absolute bottom-5" style={textColorStyle}>
+          <span className="relative h-[100px] text-base font-extralight md:text-base">
+            {title}
+          </span>
+          <div
+            className="absolute bottom-5 text-5xl font-bold"
+            style={textColorStyle}
+          >
             {scoreValue}
           </div>
         </>
