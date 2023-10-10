@@ -1,6 +1,6 @@
 import React from "react";
 import { ReportTable } from "@/components/molecules/ReportTable/ReportTable";
-import { arrayOfTags } from "@/Constants/constants";
+import { arrayOfTags } from "@/utils/constants/constants";
 
 type RecordFields = {
   yourScore?: string | number;
@@ -19,7 +19,10 @@ interface ScoreCardProps {
   companyData?: ResponseData;
 }
 
-export default function ScoreCard({ responseData, companyData }: ScoreCardProps) {
+export default function ScoreCard({
+  responseData,
+  companyData,
+}: ScoreCardProps) {
   return (
     <>
       <h2 className="font-bold md:text-xl lg:text-4xl">SEO scorecard</h2>
@@ -66,12 +69,11 @@ export default function ScoreCard({ responseData, companyData }: ScoreCardProps)
                 )}
               </tr>
             </thead>
-              <ReportTable
-                tableHeader={tableHeader?.fields?.Name}
-                tableBody={tableBody}
-                tag={tag}
-              />
-            
+            <ReportTable
+              tableHeader={tableHeader?.fields?.Name}
+              tableBody={tableBody}
+              tag={tag}
+            />
           </table>
         );
       })}

@@ -1,4 +1,4 @@
-import { colors } from "../../../Constants/constants";
+import { colors } from "../../constants/constants";
 import { ColorBasedOnValue } from "../ColorBasedOnValue/ColorBasedOnValue";
 
 type ItemType = {

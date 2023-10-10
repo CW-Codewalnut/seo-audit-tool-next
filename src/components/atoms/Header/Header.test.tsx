@@ -31,6 +31,6 @@ describe("Header", () => {
 
   it("renders the alt text 'company logo'", () => {
     renderComponent();
-    expect(screen.getByAltText("Company Logo")).toBeInTheDocument(); // Assuming altText prop is "Company Logo"
+    expect(screen.getByAltText("Company Logo")).toBeInTheDocument();
   });
 });

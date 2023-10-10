@@ -20,7 +20,7 @@ describe("Card", () => {
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
 
-  it("render card with className prop", () => {
+  it("render card with additional classes", () => {
     renderComponent();
     expect(screen.getByRole("article")).toHaveClass("additional-test-class");
   });

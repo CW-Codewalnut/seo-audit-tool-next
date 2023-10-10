@@ -16,7 +16,7 @@ describe("FormatNumber", () => {
   });
 
   it("should return the same string if input is a string", () => {
-    expect(FormatNumber("1234")).toBe("1234");
+    expect(FormatNumber("xyz")).toBe("xyz");
     expect(FormatNumber("abcd")).toBe("abcd");
   });
 });

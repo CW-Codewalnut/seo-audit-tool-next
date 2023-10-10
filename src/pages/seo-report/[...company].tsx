@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { technicalTerms } from "@/Constants/constants";
 import { Banner } from "@/components/atoms/Banner/Banner";
 import { Card } from "@/components/atoms/Card/Card";
 import { Footer } from "@/components/atoms/Footer/Footer";
@@ -8,6 +7,7 @@ import { Header } from "@/components/atoms/Header/Header";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
 import { TableData } from "@/utils/api/airtableEndPoints";
+import { technicalTerms } from "@/utils/constants/constants";
 import ScoreCard, { ResponseData } from "./scoreCard";
 
 export default function Report() {
@@ -57,12 +57,21 @@ export default function Report() {
                 companyData={companyData}
               />
             </Card>
-            {
-              company && <a href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`} target="_blank" className="flex font-semibold justify-center bg-[#78C317] text-white py-2 px-5 rounded-xl hover:bg-[#5A960C] w-fit mt-5" rel="noreferrer">
-              Download Report in PDF <img src="/img/download-icon.svg" alt="download icon" className="ml-3" />
-            </a>
-            }
-            
+            {company && (
+              <a
+                href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`}
+                target="_blank"
+                className="mt-5 flex w-fit justify-center rounded-xl bg-[#78C317] py-2 px-5 font-semibold text-white hover:bg-[#5A960C]"
+                rel="noreferrer"
+              >
+                Download Report in PDF{" "}
+                <img
+                  src="/img/download-icon.svg"
+                  alt="download icon"
+                  className="ml-3"
+                />
+              </a>
+            )}
           </>
         ) : (
           <Spinner />

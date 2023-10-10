@@ -1,4 +1,4 @@
-import { colors } from "@/Constants/constants";
+import { colors } from "@/utils/constants/constants";
 
 interface ColorBasedOnScoreProps {
   score: string | number;

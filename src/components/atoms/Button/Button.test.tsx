@@ -11,7 +11,6 @@ describe("Button", () => {
       onClick: mockOnClick,
       variant: "primary",
       children: "Button Text",
-      type: "button",
       trailingIcon: "img/add-icon.svg",
       trailingIconAlt: "Trailing Icon Text",
     };

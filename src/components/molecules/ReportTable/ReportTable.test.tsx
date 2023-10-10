@@ -6,8 +6,8 @@ describe('ReportTable', ()=>{
         const defaultProps: ReportTableProps = {
             tableHeader: "HeaderName",
             tableBody: [
-                { fields: { Name: "HeaderName", yourScore: 50, yourCompiteiter1: 60, yourCompiteiter2: 70 } },
-                { fields: { Name: "Row1Name", yourScore: 90, yourCompiteiter1: 80, yourCompiteiter2: 75 } },
+                { id:"1", fields: { Name: "HeaderName", yourScore: 50, yourCompiteiter1: 60, yourCompiteiter2: 70, Tags:["Abc"] } },
+                { id:"2", fields: { Name: "Row1Name", yourScore: 90, yourCompiteiter1: 80, yourCompiteiter2: 75, Tags:["Abc"] } },
             ],
             tag: "TestTag"
         };
