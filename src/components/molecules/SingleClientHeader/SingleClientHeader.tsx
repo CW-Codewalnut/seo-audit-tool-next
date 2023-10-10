@@ -1,41 +1,59 @@
 import DoughnutChart from "@/components/atoms/DoughnutChart/DoughnutChart";
+import { ResponseData } from "../ReportTable/ReportTable";
 
-export function SingleClientHeader() {
+interface SingleClientHeaderProps {
+  companyData: ResponseData[];
+}
 
+export function SingleClientHeader({ companyData }: SingleClientHeaderProps) {
   const chartData = {
-    labels: ['Red', 'white'],
+    labels: ["Red", "white"],
     datasets: [
       {
-        label: '# of Votes',
+        label: "# of Votes",
         data: [50],
-        backgroundColor: [
-          '#FFBE00',
-          '#E9F0F5',
-        ],
-        borderColor: [
-          '#FFBE00',
-          '#E9F0F5',
-        ],
+        backgroundColor: ["#FFBE00", "#E9F0F5"],
+        borderColor: ["#FFBE00", "#E9F0F5"],
         borderWidth: 1,
       },
     ],
   };
 
+  const createdTime = companyData[0]?.createdTime;
+  const formattedDate = createdTime
+    ? `${new Date(createdTime).getDate()} ${new Date(
+        createdTime,
+      ).toLocaleString("default", { month: "short" })} ${new Date(
+        createdTime,
+      ).getFullYear()}`
+    : "";
+
   return (
-    <div className="py-10 bg-white">
-      <div className="md:flex gap-5 md:w-[70%] px-5 md:px-0 mx-auto justify-between">       
+    <div className="bg-white py-10">
+      <div className="mx-auto justify-between gap-5 px-5 md:flex md:w-[70%] md:px-0">
         <div className="flex gap-5">
-          <img src="/img/akasa_logo.png" alt="" className="rounded-lg w-16 h-16"/>
+          <img
+            src={companyData[0]?.fields?.Name}
+            alt=""
+            className="h-16 w-16 rounded-lg"
+          />
           <div>
             <h1 className="text-sm font-semibold">Akasa Air</h1>
-            <h2 className="text-xl font-bold">Website<br /> health scorecard</h2>
+            <h2 className="text-xl font-bold">
+              Website
+              <br /> health scorecard
+            </h2>
           </div>
         </div>
-        <div className="flex gap-5 items-center">
+        <div className="flex items-center gap-5">
           <DoughnutChart data={chartData} />
           <div>
-            <p>Overall<br/>Performance</p>
-            <p>As on 09 Oct 23</p>
+            <p className="text-base font-bold">
+              Overall
+              <br />
+              Performance
+            </p>
+            <p>As on {formattedDate}</p>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ type RecordFields = {
 export interface ResponseData {
   id: string;
   fields: RecordFields;
+  createdTime?: string;
 }
 
 interface ScoreCardProps {
