@@ -1,0 +1,160 @@
+body {
+    font-family: roc-grotesk, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    table-layout: fixed;
+  }
+  .whs_legend {
+  font-weight: 600;
+  display: none;
+  margin-top: 0.5rem;
+  color: rgb(57, 81, 98);
+  gap: 1.25rem;
+  font-size: 14px;
+  margin-left: 7px;
+}
+td:first-child {
+   border: 2px solid #fff;
+    text-align: left;
+    width: 40%;
+    padding:12px;
+	font-size: 1.25rem;
+    font-weight: 500;
+    font-family: roc-grotesk, sans-serif;
+  }
+td:not(:first-child) {
+    text-align: center;
+     border: 2px solid #fff;
+    padding: 8px;
+    flex : 1;
+    		font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  table tr:first-child {
+  border-top: 0;
+
+}
+
+table tr:not(:first-child) {
+    border: 2px solid #fff;
+
+}
+  .td-head {
+    color: #0f2a3d !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+  }
+  
+  .top-card {
+    border-top: 5px solid #78c317;
+    margin: auto;
+    margin-top: 2.5rem;
+    padding: 2.25rem;
+    box-shadow: 0 5px 10px rgba(90, 111, 125, 0.15);
+  }
+  .report-seo-card {
+    background-color: #fff;
+    border-radius: 1.25rem;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+    padding: 2.25rem;
+    box-shadow: 0 5px 10px rgba(90, 111, 125, 0.2);
+  }
+  
+  .seo-header {
+    color: #0f2a3d;
+    font-family: roc-grotesk, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1rem 0;
+  }
+  
+  .summary-btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0.75rem;
+  }
+  
+  .view-button {
+    border: none;
+    background: none;
+    color: #0f2a3d;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: inherit;
+  }
+  .header-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .audit-heading {
+    text-align: center;
+    color: #fff;
+    font-family: roc-grotesk, sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  
+  .mobile{
+    display: none;
+  }
+ .main-conatiner{
+ margin-top:0.5rem
+}
+  .client-website {
+  font-size: 1rem !important;
+  color: #5a6f7d !important;
+}
+@media only screen and (max-width: 1024px){
+    .desktop{
+      display: none;
+    }
+    .mobile{
+      display: inline;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .top-card{
+      margin:0;
+      width: 100%;
+      padding:10px;
+    }
+    .client-name{
+      font-size:20px;
+      margin-bottom: 20px;
+    }
+    .desktop{
+      display: none;
+    }
+    .mobile{
+      display: inline;
+    }
+    td:not(:first-child){
+      padding:2px !important;
+      font-size: 14px;
+    }
+    .report-seo-card{
+      padding:10px;
+      margin:20px 0;
+      width: 100%;
+    }
+    td:first-child{
+      width: 40%;
+      font-size: 0.75rem;
+      padding:5px 10px 5px 10px;
+    }
+    
+	.client-website {
+  font-size: 0.75rem !important;
+	}
+    .whs_legend{
+    display: flex;
+  }
+  }
