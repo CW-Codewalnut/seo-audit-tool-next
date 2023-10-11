@@ -3,15 +3,18 @@ import { ResponseData } from "../ReportTable/ReportTable";
 
 interface SingleClientHeaderProps {
   companyData: ResponseData[];
+  overallPerformance: any;
 }
 
-export function SingleClientHeader({ companyData }: SingleClientHeaderProps) {
+export function SingleClientHeader({ companyData, overallPerformance }: SingleClientHeaderProps) {
+  const overallPerformanceData = overallPerformance[0]?.fields?.yourScore;
+
   const chartData = {
     labels: ["Red", "white"],
     datasets: [
       {
         label: "# of Votes",
-        data: [50],
+        data: [overallPerformanceData],
         backgroundColor: ["#FFBE00", "#E9F0F5"],
         borderColor: ["#FFBE00", "#E9F0F5"],
         borderWidth: 1,
@@ -38,7 +41,7 @@ export function SingleClientHeader({ companyData }: SingleClientHeaderProps) {
             className="h-16 w-16 rounded-lg"
           />
           <div>
-            <h1 className="text-sm font-semibold">Akasa Air</h1>
+            <h1 className="text-sm font-semibold">{companyData[0]?.fields?.yourScore}</h1>
             <h2 className="text-xl font-bold">
               Website
               <br /> health scorecard

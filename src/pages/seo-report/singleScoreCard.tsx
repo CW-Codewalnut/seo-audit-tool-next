@@ -10,17 +10,20 @@ interface SingleClientProps {
 
 export function SingleScoreCard({ responseData }: SingleClientProps) {
   function filterDataOnTag(data: ResponseData[], tag: string) {
-    const webSetUpData = data?.filter(
-      (item) => item.fields.Name !== tag && item.fields.Tags.includes(tag),
-    );
-
-    return webSetUpData;
+    const filteredData = data?.filter((item) => {
+      if(tag === "Overall Performance"){
+        return item.fields.Name === tag ;
+      }
+      return item.fields.Name !== tag && item.fields.Tags.includes(tag)
+  });
+    return filteredData;
   }
 
   return (
     <>
       <SingleClientHeader
         companyData={filterDataOnTag(responseData, "CompanyName")}
+        overallPerformance={filterDataOnTag(responseData, "Overall Performance")}
       />
       <div className="mx-auto w-[90%] md:w-[70%]">
         {arrayOfTags.map((tag: string) => (
