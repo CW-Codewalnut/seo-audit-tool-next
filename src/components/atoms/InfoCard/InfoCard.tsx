@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "../Card/Card";
 
-interface InfoCardProps {
+export interface InfoCardProps {
   listOfTechnicalTerms: string[];
 }
 
