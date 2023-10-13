@@ -13,10 +13,10 @@ export function Banner({ bannerUrl, heading, subHeading }: BannerProps) {
       className="h-[330px] rounded-b-[5%] bg-cover lg:h-[400px]"
       data-testid="banner-container"
     >
-      <h1 className="pt-5 text-center text-xl font-bold text-white md:pt-10 lg:text-5xl">
+      <h2 className="pt-5 text-center text-xl font-bold text-white md:pt-10 lg:text-5xl">
         {heading}
-      </h1>
-      <p className="mt-4 text-center text-base font-semibold capitalize text-[#78c317] lg:mt-6 lg:text-2xl">
+      </h2>
+      <p className="mt-4 text-center text-base font-semibold capitalize text-lightGreen lg:mt-6 lg:text-2xl">
         {subHeading}
       </p>
     </div>

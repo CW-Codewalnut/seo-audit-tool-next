@@ -3,8 +3,11 @@ import { Card } from "./Card";
 
 describe("Card", () => {
   const renderComponent = () => {
+    const defaultProps = {
+      additionalClassName: "additional-test-class"
+    }
     render(
-      <Card className="additional-test-class">
+      <Card {...defaultProps}>
         <h1>Test Content</h1>
       </Card>,
     );

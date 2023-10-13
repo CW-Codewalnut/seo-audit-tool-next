@@ -1,5 +1,5 @@
-import { colors } from "../../constants/constants";
-import { ColorBasedOnText } from "../ColorBasedOnText/ColorBasedOnText";
+import { tableColors } from "../../constants/constants";
+import { getColorBasedOnText } from "../getColorBasedOnText/getColorBasedOnText";
 
 type ItemType = {
   fields?: {
@@ -11,7 +11,7 @@ type ItemType = {
   };
 };
 
-export interface FieldsStyleProps {
+export interface FieldsStyleArgs {
   item: ItemType;
   order: number;
   fieldType?: "cell" | "header";
@@ -19,13 +19,13 @@ export interface FieldsStyleProps {
   subTags: string;
 }
 
-export const FieldsStyle = ({
+export const getFieldsStyle = ({
   item,
   order,
   fieldType = "cell",
   tag = "",
   subTags = "",
-}: FieldsStyleProps): { backgroundColor: string; color: string } => {
+}: FieldsStyleArgs): { backgroundColor: string; color: string } => {
   const fields = item?.fields || {};
   const {
     yourScore,
@@ -43,7 +43,7 @@ export const FieldsStyle = ({
     )
   ) {
     const scoreValue = scores[order - 1];
-    return ColorBasedOnText({
+    return getColorBasedOnText({
       value: scoreValue as "Yes" | "No" | "Partial",
       fieldType,
     });
@@ -59,23 +59,23 @@ export const FieldsStyle = ({
       };
       const [min, max] = thresholds[subTags];
       if (checkScores((score) => Number(score) < min)) {
-        return colors.min[fieldType];
+        return tableColors.min[fieldType];
       }
       if (checkScores((score) => Number(score) > max)) {
-        return colors.max[fieldType];
+        return tableColors.max[fieldType];
       }
       if (
         checkScores((score) => Number(score) >= min && Number(score) <= max)
       ) {
-        return colors.normal[fieldType];
+        return tableColors.normal[fieldType];
       }
       break;
     }
     default:
       if (tag === "Web Vitals" || fieldType === "header") {
-        return colors[fieldType === "header" ? "header" : "default"][fieldType];
+        return tableColors[fieldType === "header" ? "header" : "default"][fieldType];
       }
   }
 
-  return colors.default[fieldType];
+  return tableColors.default[fieldType];
 };

@@ -15,12 +15,12 @@ export interface ResponseData {
 }
 
 interface ScoreCardProps {
-  responseData: ResponseData[];
+  scoreData: ResponseData[];
   companyData?: ResponseData;
 }
 
 export default function ScoreCard({
-  responseData,
+  scoreData,
   companyData,
 }: ScoreCardProps) {
   return (
@@ -43,8 +43,8 @@ export default function ScoreCard({
         </tbody>
       </table>
       {arrayOfTags.map((tag) => {
-        const tableBody = responseData?.filter(
-          (item) => item?.fields?.Tags[0].trim() === tag,
+        const tableBody = scoreData?.filter(
+          (item) => item?.fields?.Tags?.[0].trim() === tag,
         );
 
         const tableHeader = tableBody?.find(
@@ -55,17 +55,17 @@ export default function ScoreCard({
           <table className="mt-2 md:mt-5">
             <thead>
               <tr>
-                <td className="bg-[#0f2a3d] text-white">
+                <td className="bg-deepNavy text-white">
                   {tableHeader?.fields?.Name}
                 </td>
                 {companyData?.fields?.yourScore && (
-                  <td style={{ backgroundColor: "rgb(15, 42, 61)" }} />
+                  <td className="bg-deepNavy" />
                 )}
                 {companyData?.fields?.yourCompiteiter1 && (
-                  <td style={{ backgroundColor: "rgb(15, 42, 61)" }} />
+                  <td className="bg-deepNavy" />
                 )}
                 {companyData?.fields?.yourCompiteiter2 && (
-                  <td style={{ backgroundColor: "rgb(15, 42, 61)" }} />
+                  <td className="bg-deepNavy" />
                 )}
               </tr>
             </thead>

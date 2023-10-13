@@ -1,6 +1,6 @@
 import React from "react";
-import { FieldsStyle } from "@/utils/helpers/FieldsStyle/FieldsStyle";
-import { FormatNumber } from "@/utils/helpers/FormatNumber/FormatNumber";
+import { getFieldsStyle } from "@/utils/helpers/getFieldsStyle/getFieldsStyle";
+import { getFormatNumber } from "@/utils/helpers/getFormatNumber/getFormatNumber";
 
 export type RecordFields = {
   yourScore?: string | number;
@@ -26,9 +26,9 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
         ?.filter((item: any) => item.fields.Name !== tableHeader)
         .map((item: any) => (
           <tr key={item.id}>
-            <td className="bg-[#e9f0f5] text-[#0f2a3d]"> {item.fields.Name}</td>
+            <td className="bg-[#e9f0f5] text-deepNavy"> {item.fields.Name}</td>
             <td
-              style={FieldsStyle({
+              style={getFieldsStyle({
                 item,
                 order: 1,
                 fieldType: "cell",
@@ -36,11 +36,11 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
                 subTags: item.fields.Name,
               })}
             >
-              {FormatNumber(item.fields.yourScore || "")}
+              {getFormatNumber(item.fields.yourScore || "")}
             </td>
             {item?.fields?.yourCompiteiter1 && (
               <td
-                style={FieldsStyle({
+                style={getFieldsStyle({
                   item,
                   order: 2,
                   fieldType: "cell",
@@ -48,12 +48,12 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
                   subTags: item.fields.Name,
                 })}
               >
-                {FormatNumber(item.fields.yourCompiteiter1 || "")}
+                {getFormatNumber(item.fields.yourCompiteiter1 || "")}
               </td>
             )}
             {item?.fields?.yourCompiteiter2 && (
               <td
-                style={FieldsStyle({
+                style={getFieldsStyle({
                   item,
                   order: 3,
                   fieldType: "cell",
@@ -61,7 +61,7 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
                   subTags: item.fields.Name,
                 })}
               >
-                {FormatNumber(item.fields.yourCompiteiter2 || "")}
+                {getFormatNumber(item.fields.yourCompiteiter2 || "")}
               </td>
             )}
           </tr>

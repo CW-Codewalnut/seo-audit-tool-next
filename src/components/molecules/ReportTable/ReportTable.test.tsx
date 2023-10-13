@@ -38,7 +38,7 @@ describe("ReportTable", () => {
     expect(screen).not.toBeNull();
   });
 
-  it("should not render a row when the Name in tableBody matches tableHeader", () => {
+  it("should not render a data if Name and Header name are same", () => {
     renderComponent();
     expect(screen.queryByText("HeaderName")).not.toBeInTheDocument();
     expect(screen.queryByText(50)).not.toBeInTheDocument();
@@ -46,7 +46,7 @@ describe("ReportTable", () => {
     expect(screen.queryByText(70)).not.toBeInTheDocument();
   });
 
-  it("should render a row when the Name in tableBody not matches tableHeader", () => {
+  it("render a data if Name and Header name are not same", () => {
     renderComponent();
     expect(screen.getByText("Row1Name")).toBeInTheDocument();
     expect(screen.getByText(90)).toBeInTheDocument();

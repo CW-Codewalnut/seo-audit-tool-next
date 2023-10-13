@@ -1,10 +1,10 @@
 
-import { colors } from "@/utils/constants/constants";
-import { FieldsStyle, FieldsStyleProps } from "./FieldsStyle";
+import { tableColors } from "@/utils/constants/constants";
+import { getFieldsStyle, FieldsStyleArgs } from "./getFieldsStyle";
 
 describe("FieldsStyle", () => {
-  const getStyles = (additionalProps?: Partial<FieldsStyleProps>) => {
-    const defaultProps: FieldsStyleProps = {
+  const getStyles = (additionalProps?: Partial<FieldsStyleArgs>) => {
+    const defaultProps: FieldsStyleArgs = {
       item: { fields: { yourScore: "Yes" } },
       order: 1,
       fieldType: "cell",
@@ -12,17 +12,17 @@ describe("FieldsStyle", () => {
       subTags: "",
     };
 
-    return FieldsStyle({ ...defaultProps, ...additionalProps });
+    return getFieldsStyle({ ...defaultProps, ...additionalProps });
   };
 
   it("should return max color for value 'Yes' with fieldType 'cell'", () => {
     const styles = getStyles();
-    expect(styles).toEqual(colors.max.cell);
+    expect(styles).toEqual(tableColors.max.cell);
   });
 
   it("should return max color for value 'Yes' with fieldType 'header'", () => {
     const styles = getStyles({ fieldType: "header" });
-    expect(styles).toEqual(colors.max.header);
+    expect(styles).toEqual(tableColors.max.header);
   });
 
   it("should return min color for value 'No' with fieldType 'header'", () => {
@@ -30,12 +30,12 @@ describe("FieldsStyle", () => {
       fieldType: "header",
       item: { fields: { yourScore: "No" } },
     });
-    expect(styles).toEqual(colors.min.header);
+    expect(styles).toEqual(tableColors.min.header);
   });
 
   it("should return min color for value 'No' with fieldType 'cell'", () => {
     const styles = getStyles({ item: { fields: { yourScore: "No" } } });
-    expect(styles).toEqual(colors.min.cell);
+    expect(styles).toEqual(tableColors.min.cell);
   });
 
   it("should return normal color for value 'Partial' with fieldType 'header'", () => {
@@ -43,12 +43,12 @@ describe("FieldsStyle", () => {
       fieldType: "header",
       item: { fields: { yourScore: "Partial" } },
     });
-    expect(styles).toEqual(colors.normal.header);
+    expect(styles).toEqual(tableColors.normal.header);
   });
 
   it("should return normal color for value 'Partial' with fieldType 'cell'", () => {
     const styles = getStyles({ item: { fields: { yourScore: "Partial" } } });
-    expect(styles).toEqual(colors.normal.cell);
+    expect(styles).toEqual(tableColors.normal.cell);
   });
 
   it("should return max color for value more then '70' with sub tag 'Mobile score'", () => {
@@ -56,7 +56,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 72 } },
       subTags: "Mobile score",
     });
-    expect(styles).toEqual(colors.max.cell);
+    expect(styles).toEqual(tableColors.max.cell);
   });
 
   it("should return min color for value less then '30' with sub tag 'Mobile score'", () => {
@@ -64,7 +64,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 10 } },
       subTags: "Mobile score",
     });
-    expect(styles).toEqual(colors.min.cell);
+    expect(styles).toEqual(tableColors.min.cell);
   });
 
   it("should return normal color for value between '30' to '70' with sub tag 'Mobile score'", () => {
@@ -72,7 +72,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 55 } },
       subTags: "Mobile score",
     });
-    expect(styles).toEqual(colors.normal.cell);
+    expect(styles).toEqual(tableColors.normal.cell);
   });
 
   it("should return max color for value more then '80' with sub tag 'Desktop score'", () => {
@@ -80,7 +80,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 87 } },
       subTags: "Desktop score",
     });
-    expect(styles).toEqual(colors.max.cell);
+    expect(styles).toEqual(tableColors.max.cell);
   });
 
   it("should return min color for value less then '30' with sub tag 'Desktop score'", () => {
@@ -88,7 +88,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 10 } },
       subTags: "Desktop score",
     });
-    expect(styles).toEqual(colors.min.cell);
+    expect(styles).toEqual(tableColors.min.cell);
   });
 
   it("should return normal color for value between '30' to '80' with sub tag 'Desktop score'", () => {
@@ -96,7 +96,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 50 } },
       subTags: "Desktop score",
     });
-    expect(styles).toEqual(colors.normal.cell);
+    expect(styles).toEqual(tableColors.normal.cell);
   });
 
   it("should return max color for value more then '90' with sub tag 'Accessibility'", () => {
@@ -104,7 +104,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 92 } },
       subTags: "Accessibility",
     });
-    expect(styles).toEqual(colors.max.cell);
+    expect(styles).toEqual(tableColors.max.cell);
   });
 
   it("should return min color for value less then '70' with sub tag 'Accessibility'", () => {
@@ -112,7 +112,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 34 } },
       subTags: "Accessibility",
     });
-    expect(styles).toEqual(colors.min.cell);
+    expect(styles).toEqual(tableColors.min.cell);
   });
 
   it("should return normal color for value between '70' to '90' with sub tag 'Accessibility'", () => {
@@ -120,7 +120,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: 84 } },
       subTags: "Accessibility",
     });
-    expect(styles).toEqual(colors.normal.cell);
+    expect(styles).toEqual(tableColors.normal.cell);
   });
 
   it("should return header color when fieldType is 'header' and fields are undefined", () => {
@@ -128,7 +128,7 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: undefined } },
       fieldType: "header",
     });
-    expect(styles).toEqual(colors.header.header);
+    expect(styles).toEqual(tableColors.header.header);
   });
 
   it("should return default color when tag 'Web Vitals'", () => {
@@ -136,6 +136,6 @@ describe("FieldsStyle", () => {
       item: { fields: { yourScore: undefined } },
       tag: "Web Vitals",
     });
-    expect(styles).toEqual(colors.default.cell);
+    expect(styles).toEqual(tableColors.default.cell);
   });
 });

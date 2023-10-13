@@ -1,4 +1,4 @@
-export const colors = {
+export const tableColors = {
     max: {
       cell: { backgroundColor: "#e6f5d2", color: "#78c317" },
       header: { backgroundColor: "#78c317", color: "white" },
@@ -31,7 +31,7 @@ export const colors = {
     "Social Proofing",
   ];
   
-  export const technicalTerms = [
+  export const listOfTechnicalTerms = [
     "CrawlingErrors",
     "#404 pages",
     "# of Pages with Title errors",

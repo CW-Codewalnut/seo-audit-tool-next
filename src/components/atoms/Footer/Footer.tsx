@@ -1,9 +1,12 @@
 import React from "react";
 
-export function Footer() {
+interface FooterProps{
+  children: string;
+}
+export function Footer({children}: FooterProps) {
   return (
-    <div className="w-full bg-green-800 p-4 py-6 text-center text-xs text-green-400 md:text-lg">
-      LeadWalnut is a brand of Bizboost Business Solutions LLP.
-    </div>
+    <footer className="w-full bg-green-800 p-4 py-6 text-center text-xs text-green-400 md:text-lg">
+      {children}
+    </footer>
   );
 }
