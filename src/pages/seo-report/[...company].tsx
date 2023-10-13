@@ -4,10 +4,10 @@ import { Banner } from "@/components/atoms/Banner/Banner";
 import { Card } from "@/components/atoms/Card/Card";
 import { Footer } from "@/components/atoms/Footer/Footer";
 import { Header } from "@/components/atoms/Header/Header";
-import { Spinner } from "@/components/atoms/Spinner/Spinner";
-import { listOfTechnicalTerms } from "@/utils/constants/constants";
-import { fetchTableData } from "@/utils/api/airtableEndPoints";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
+import { Spinner } from "@/components/atoms/Spinner/Spinner";
+import { fetchTableData } from "@/utils/api/airtableEndPoints";
+import { listOfTechnicalTerms } from "@/utils/constants/constants";
 import ScoreCard, { ResponseData } from "./scoreCard";
 
 export default function Report() {
@@ -23,9 +23,9 @@ export default function Report() {
       fetchTableData(company[0])
         .then((res) => {
           const companyName = res.data.records.find(
-            (item: ResponseData) => item?.fields?.Tags?.[0] === "CompanyName"
+            (item: ResponseData) => item?.fields?.Tags?.[0] === "CompanyName",
           );
-  
+
           setScoreData(res.data.records);
           setCompanyData(companyName);
         })
@@ -48,16 +48,13 @@ export default function Report() {
         {scoreData ? (
           <>
             <Card>
-              <ScoreCard
-                scoreData={scoreData}
-                companyData={companyData}
-              />
+              <ScoreCard scoreData={scoreData} companyData={companyData} />
             </Card>
             {company && (
               <a
                 href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`}
                 target="_blank"
-                className="mt-5 flex w-fit justify-center rounded-xl bg-lightGreen py-2 px-5 font-semibold text-white hover:bg-darkGreen"
+                className="mx-4 mt-5 flex w-fit justify-center rounded-xl bg-lightGreen py-2 px-5 font-semibold text-white hover:bg-darkGreen lg:mx-0"
                 rel="noreferrer"
               >
                 Download Report in PDF{" "}
