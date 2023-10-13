@@ -8,6 +8,7 @@ describe("Banner", () => {
       bannerUrl: "img/banner-image.png",
       heading: "Main heading",
       subHeading: "Dummy Subheading",
+      bannerAltTag: "image Tag"
     };
     render(<Banner {...defaultProps} />);
   };
@@ -29,8 +30,11 @@ describe("Banner", () => {
 
   it("sets the background image correctly", () => {
     renderComponent();
-    expect(screen.getByTestId("banner-container")).toHaveStyle(
-      `background-image: url(img/banner-image.png)`,
-    );
+    expect(screen.getByRole("img")).toHaveAttribute("src", "img/banner-image.png")
+  });
+
+  it("sets the alt tag for image", () => {
+    renderComponent();
+    expect(screen.getByRole("img")).toHaveAttribute("alt", "image Tag")
   });
 });

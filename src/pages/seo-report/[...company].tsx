@@ -43,8 +43,9 @@ export default function Report() {
         bannerUrl="/img/banner-image.webp"
         heading="Website health scorecard"
         subHeading={companyData?.fields?.yourScore || ""}
+        bannerAltTag="main banner"
       />
-      <div className="mx-auto mt-[-220px] md:mt-[-200px] md:w-[100%] lg:w-[80%]">
+      <div className="mx-auto mt-[-220px] md:mt-[-150px] md:w-[100%] lg:w-[80%]">
         {scoreData ? (
           <>
             <Card>
