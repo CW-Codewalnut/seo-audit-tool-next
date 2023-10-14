@@ -1,4 +1,4 @@
-import { tableColors } from "../../constants/constants";
+import { TABLE_COLOR } from "../../constants/constants";
 import { getColorBasedOnText } from "../getColorBasedOnText/getColorBasedOnText";
 
 type ItemType = {
@@ -59,23 +59,23 @@ export const getFieldsStyle = ({
       };
       const [min, max] = thresholds[subTags];
       if (checkScores((score) => Number(score) < min)) {
-        return tableColors.min[fieldType];
+        return TABLE_COLOR.min[fieldType];
       }
       if (checkScores((score) => Number(score) > max)) {
-        return tableColors.max[fieldType];
+        return TABLE_COLOR.max[fieldType];
       }
       if (
         checkScores((score) => Number(score) >= min && Number(score) <= max)
       ) {
-        return tableColors.normal[fieldType];
+        return TABLE_COLOR.normal[fieldType];
       }
       break;
     }
     default:
       if (tag === "Web Vitals" || fieldType === "header") {
-        return tableColors[fieldType === "header" ? "header" : "default"][fieldType];
+        return TABLE_COLOR[fieldType === "header" ? "header" : "default"][fieldType];
       }
   }
 
-  return tableColors.default[fieldType];
+  return TABLE_COLOR.default[fieldType];
 };

@@ -11,7 +11,7 @@ describe("InfoCard", () => {
     render(<InfoCard {...defaultProps} {...additionalProps} />);
   };
 
-  it("renders the component without error", () => {
+  it("renders without error", () => {
     renderComponent();
     expect(screen).not.toBeNull();
   });

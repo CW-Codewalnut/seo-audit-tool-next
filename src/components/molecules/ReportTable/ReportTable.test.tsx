@@ -38,19 +38,19 @@ describe("ReportTable", () => {
     expect(screen).not.toBeNull();
   });
 
-  it("should not render a data if Name and Header name are same", () => {
-    renderComponent();
-    expect(screen.queryByText("HeaderName")).not.toBeInTheDocument();
-    expect(screen.queryByText(50)).not.toBeInTheDocument();
-    expect(screen.queryByText(60)).not.toBeInTheDocument();
-    expect(screen.queryByText(70)).not.toBeInTheDocument();
-  });
-
   it("render a data if Name and Header name are not same", () => {
     renderComponent();
     expect(screen.getByText("Row1Name")).toBeInTheDocument();
     expect(screen.getByText(90)).toBeInTheDocument();
     expect(screen.getByText(80)).toBeInTheDocument();
     expect(screen.getByText(75)).toBeInTheDocument();
+  });
+
+  it("should not render a data if Name and Header name are same", () => {
+    renderComponent();
+    expect(screen.queryByText("HeaderName")).not.toBeInTheDocument();
+    expect(screen.queryByText(50)).not.toBeInTheDocument();
+    expect(screen.queryByText(60)).not.toBeInTheDocument();
+    expect(screen.queryByText(70)).not.toBeInTheDocument();
   });
 });

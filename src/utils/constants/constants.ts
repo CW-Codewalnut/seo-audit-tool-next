@@ -1,4 +1,4 @@
-export const tableColors = {
+export const TABLE_COLOR = {
     max: {
       cell: { backgroundColor: "#e6f5d2", color: "#78c317" },
       header: { backgroundColor: "#78c317", color: "white" },
@@ -21,7 +21,7 @@ export const tableColors = {
     },
   };
   
-  export const arrayOfTags = [
+  export const ARRAY_OF_TAGS = [
     "Web Set Up",
     "Web Vitals",
     "Meta Data Compliance",
@@ -31,7 +31,7 @@ export const tableColors = {
     "Social Proofing",
   ];
   
-  export const listOfTechnicalTerms = [
+  export const LIST_OF_TECHNICAL_TERMS = [
     "CrawlingErrors",
     "#404 pages",
     "# of Pages with Title errors",

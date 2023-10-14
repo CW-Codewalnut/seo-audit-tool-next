@@ -1,4 +1,4 @@
-import { tableColors } from "@/utils/constants/constants";
+import { TABLE_COLOR } from "@/utils/constants/constants";
 
 interface ColorBasedOnScoreArgs {
   score: string | number;
@@ -10,7 +10,7 @@ export const getColorBasedOnScore = ({
   fieldType,
 }: ColorBasedOnScoreArgs) => {
   const numericScore = typeof score === "string" ? parseFloat(score) : score;
-  if (numericScore < 30) return tableColors.min[fieldType];
-  if (numericScore >= 30 && numericScore <= 70) return tableColors.normal[fieldType];
-  return tableColors.max[fieldType];
+  if (numericScore < 30) return TABLE_COLOR.min[fieldType];
+  if (numericScore >= 30 && numericScore <= 70) return TABLE_COLOR.normal[fieldType];
+  return TABLE_COLOR.max[fieldType];
 };

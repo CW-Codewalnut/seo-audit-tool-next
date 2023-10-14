@@ -18,22 +18,22 @@ describe("Banner", () => {
     expect(screen).not.toBeNull();
   });
 
-  it("render with Main heading", () => {
+  it("render the heading text correctly", () => {
     renderComponent();
     expect(screen.getByText("Main heading")).toBeInTheDocument();
   });
 
-  it("render with Subheading", () => {
+  it("renders with Subheading text", () => {
     renderComponent();
     expect(screen.getByText("Dummy Subheading")).toBeInTheDocument();
   });
 
-  it("sets the background image correctly", () => {
+  it("renders the background image correctly", () => {
     renderComponent();
     expect(screen.getByRole("img")).toHaveAttribute("src", "img/banner-image.png")
   });
 
-  it("sets the alt tag for image", () => {
+  it("sets the alt tag for the background image correctly", () => {
     renderComponent();
     expect(screen.getByRole("img")).toHaveAttribute("alt", "image Tag")
   });

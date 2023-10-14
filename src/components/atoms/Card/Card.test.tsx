@@ -18,7 +18,7 @@ describe("Card", () => {
     expect(screen).not.toBeNull();
   });
 
-  it("render card with children", () => {
+  it("render the card's with children", () => {
     renderComponent();
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });

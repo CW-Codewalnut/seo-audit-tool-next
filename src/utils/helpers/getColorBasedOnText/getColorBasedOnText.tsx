@@ -1,4 +1,4 @@
-import { tableColors } from "@/utils/constants/constants";
+import { TABLE_COLOR } from "@/utils/constants/constants";
 
 interface ColorBasesOnTextArgs {
   value: "Yes" | "No" | "Partial";
@@ -10,9 +10,9 @@ export const getColorBasedOnText = ({
   fieldType,
 }: ColorBasesOnTextArgs): { backgroundColor: string; color: string } => {
   const colorMap: Record<string, { backgroundColor: string; color: string }> = {
-    Yes: tableColors.max[fieldType],
-    No: tableColors.min[fieldType],
-    Partial: tableColors.normal[fieldType],
+    Yes: TABLE_COLOR.max[fieldType],
+    No: TABLE_COLOR.min[fieldType],
+    Partial: TABLE_COLOR.normal[fieldType],
   };
   return colorMap[value];
 };

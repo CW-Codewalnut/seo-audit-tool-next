@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { Banner } from "@/components/atoms/Banner/Banner";
 import { Card } from "@/components/atoms/Card/Card";
-import { Footer } from "@/components/atoms/Footer/Footer";
 import { Header } from "@/components/atoms/Header/Header";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
-import { listOfTechnicalTerms } from "@/utils/constants/constants";
+import { LIST_OF_TECHNICAL_TERMS } from "@/utils/constants/constants";
 import { fetchTableData } from "@/utils/api/airtableEndPoints";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import ScoreCard, { ResponseData } from "./scoreCard";
@@ -38,7 +38,7 @@ export default function Report() {
 
   return (
     <>
-      <Header companyLogo="/img/LeadwalnutIcon.svg" altText="Company logo" />
+      <Header companyLogo="/img/LeadwalnutIcon.svg" companyLogoAltText="Company logo" />
       <Banner
         bannerUrl="/img/banner-image.webp"
         heading="Website health scorecard"
@@ -62,10 +62,12 @@ export default function Report() {
                 rel="noreferrer"
               >
                 Download Report in PDF{" "}
-                <img
-                  src="/img/download-icon.svg"
-                  alt="download icon"
-                  className="ml-3"
+                <Image
+                 src="/img/download-icon.svg"
+                 alt="download icon"
+                 className="ml-3"
+                 width={20}
+                 height={20}
                 />
               </a>
             )}
@@ -74,9 +76,11 @@ export default function Report() {
           <Spinner />
         )}
 
-        <InfoCard listOfTechnicalTerms={listOfTechnicalTerms} />
+        <InfoCard listOfTechnicalTerms={LIST_OF_TECHNICAL_TERMS} />
       </div>
-      <Footer>LeadWalnut is a brand of Bizboost Business Solutions LLP.</Footer>
+      <footer className="w-full bg-green-800 p-4 py-6 text-center text-xs text-green-400 md:text-lg">
+         LeadWalnut is a brand of Bizboost Business Solutions LLP.
+      </footer>
     </>
   );
 }

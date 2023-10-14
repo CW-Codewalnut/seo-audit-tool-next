@@ -1,6 +1,6 @@
 import React from "react";
 import { ReportTable } from "@/components/molecules/ReportTable/ReportTable";
-import { arrayOfTags } from "@/utils/constants/constants";
+import { ARRAY_OF_TAGS } from "@/utils/constants/constants";
 
 type RecordFields = {
   yourScore?: string | number;
@@ -42,7 +42,7 @@ export default function ScoreCard({
           </tr>
         </tbody>
       </table>
-      {arrayOfTags.map((tag) => {
+      {ARRAY_OF_TAGS.map((tag) => {
         const tableBody = scoreData?.filter(
           (item) => item?.fields?.Tags?.[0].trim() === tag,
         );

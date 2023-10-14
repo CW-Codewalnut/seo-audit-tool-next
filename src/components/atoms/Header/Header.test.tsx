@@ -6,7 +6,7 @@ describe("Header", () => {
   const renderComponent = () => {
     const defaultProps: HeaderProps = {
       companyLogo: "/img/logo.png",
-      altText: "Company Logo",
+      companyLogoAltText: "Company Logo",
     };
     render(<Header {...defaultProps} />);
   };
@@ -18,18 +18,11 @@ describe("Header", () => {
 
   it("renders the company logo", () => {
     renderComponent();
-    const imageElement = screen.getByRole("img");
-    const imgSrc = imageElement.getAttribute("src");
+    expect(screen.getByRole('img')).toHaveAttribute("src","/img/logo.png")
 
-    if (!imgSrc) {
-      throw new Error("Image src attribute is missing");
-    }
-
-    const urlParam = new URLSearchParams(imgSrc.split("?")[1]).get("url");
-    expect(decodeURIComponent(urlParam || "")).toBe("/img/logo.png");
   });
 
-  it("renders the alt text 'company logo'", () => {
+  it("renders the alt text correctly", () => {
     renderComponent();
     expect(screen.getByAltText("Company Logo")).toBeInTheDocument();
   });
