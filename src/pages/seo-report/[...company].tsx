@@ -23,9 +23,9 @@ export default function Report() {
       fetchTableData(company[0])
         .then((res) => {
           const companyName = res.data.records.find(
-            (item: ResponseData) => item?.fields?.Tags?.[0] === "CompanyName"
+            (item: ResponseData) => item?.fields?.Tags?.[0] === "CompanyName",
           );
-  
+
           setScoreData(res.data.records);
           setCompanyData(companyName);
         })
@@ -49,16 +49,13 @@ export default function Report() {
         {scoreData ? (
           <>
             <Card>
-              <ScoreCard
-                scoreData={scoreData}
-                companyData={companyData}
-              />
+              <ScoreCard scoreData={scoreData} companyData={companyData} />
             </Card>
             {company && (
               <a
                 href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`}
                 target="_blank"
-                className="mt-5 flex w-fit justify-center rounded-xl bg-lightGreen py-2 px-5 font-semibold text-white hover:bg-darkGreen"
+                className="mx-4 mt-5 flex w-fit justify-center rounded-xl bg-lightGreen py-2 px-5 font-semibold text-white hover:bg-darkGreen lg:mx-0"
                 rel="noreferrer"
               >
                 Download Report in PDF{" "}
