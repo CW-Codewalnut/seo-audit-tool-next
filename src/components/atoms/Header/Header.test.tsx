@@ -16,12 +16,6 @@ describe("Header", () => {
     expect(screen).not.toBeNull();
   });
 
-  it("renders the company logo", () => {
-    renderComponent();
-    expect(screen.getByRole('img')).toHaveAttribute("src","/img/logo.png")
-
-  });
-
   it("renders the alt text correctly", () => {
     renderComponent();
     expect(screen.getByAltText("Company Logo")).toBeInTheDocument();

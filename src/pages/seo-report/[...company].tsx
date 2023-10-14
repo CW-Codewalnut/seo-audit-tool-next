@@ -6,7 +6,7 @@ import { Card } from "@/components/atoms/Card/Card";
 import { Header } from "@/components/atoms/Header/Header";
 import { Spinner } from "@/components/atoms/Spinner/Spinner";
 import { LIST_OF_TECHNICAL_TERMS } from "@/utils/constants/constants";
-import { fetchTableData } from "@/utils/api/airtableEndPoints";
+import { fetchTableData } from "@/utils/api/airtableEndPoints/airtableEndPoints";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
 import ScoreCard, { ResponseData } from "./scoreCard";
 
