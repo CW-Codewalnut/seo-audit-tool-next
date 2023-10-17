@@ -19,30 +19,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0;
-}
-
-ul,
-li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-body {
-  font-family: roc-grotesk, sans-serif;
   background-color: #e9f0f5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: auto;
+  table-layout: fixed;
+}
+
+td:first-child {
+  border: 2px solid #fff;
+  text-align: left;
+  width: 40%;
+  padding: 12px;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+td:not(:first-child) {
+  text-align: center;
+  border: 2px solid #fff;
+  padding: 8px;
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+table tr:first-child {
+  border-top: 0;
+}
+
+table tr:not(:first-child) {
+  border: 2px solid #fff;
+}
+.td-head {
+  color: #0f2a3d !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  td:not(:first-child) {
+    padding: 2px !important;
+    font-size: 14px;
+  }
+  td:first-child {
+    width: 40%;
+    font-size: 0.75rem;
+    padding: 5px 10px 5px 10px;
+  }
 }

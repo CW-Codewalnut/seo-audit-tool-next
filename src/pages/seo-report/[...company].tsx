@@ -1,0 +1,85 @@
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { Banner } from "@/components/atoms/Banner/Banner";
+import { Card } from "@/components/atoms/Card/Card";
+import { Header } from "@/components/atoms/Header/Header";
+import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
+import { Spinner } from "@/components/atoms/Spinner/Spinner";
+import { fetchTableData } from "@/utils/api/airtableEndPoints/airtableEndPoints";
+import { LIST_OF_TECHNICAL_TERMS } from "@/utils/constants/constants";
+import ScoreCard, { ScoreData } from "./scoreCard";
+
+export default function Report() {
+  const router = useRouter();
+  const [scoreData, setScoreData] = useState<ScoreData[]>();
+  const [companyData, setCompanyData] = useState<ScoreData>();
+
+  const { company } = router.query;
+  const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
+
+  useEffect(() => {
+    if (company) {
+      fetchTableData(company[0])
+        .then((res) => {
+          const organizationData = res.data.records.find(
+            (item: ScoreData) => item?.fields?.Tags?.[0] === "CompanyName",
+          );
+
+          setScoreData(res.data.records);
+          setCompanyData(organizationData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [company]);
+
+  return (
+    <>
+      <Header
+        companyLogo="/img/LeadwalnutIcon.svg"
+        companyLogoAltText="Company logo"
+      />
+      <Banner
+        bannerUrl="/img/banner-image.webp"
+        heading="Website health scorecard"
+        subHeading={companyData?.fields?.yourScore || ""}
+        bannerAltTag="main banner"
+      />
+      <div className="mx-auto mt-[-220px] md:mt-[-150px] md:w-[100%] lg:w-[80%]">
+        {scoreData ? (
+          <>
+            <Card>
+              <ScoreCard scoreData={scoreData} companyData={companyData} />
+            </Card>
+            {company && (
+              <a
+                href={`${BACKEND_BASE_URL}/generate-pdf?companyName=${company}`}
+                target="_blank"
+                className="mx-4 mt-5 flex w-fit justify-center rounded-xl bg-lightGreen py-2 px-5 font-semibold text-white hover:bg-darkGreen lg:mx-0"
+                rel="noreferrer"
+              >
+                Download Report in PDF{" "}
+                <Image
+                  src="/img/download-icon.svg"
+                  alt="download icon"
+                  className="ml-3"
+                  width={20}
+                  height={20}
+                />
+              </a>
+            )}
+          </>
+        ) : (
+          <Spinner />
+        )}
+
+        <InfoCard listOfTechnicalTerms={LIST_OF_TECHNICAL_TERMS} />
+      </div>
+      <footer className="w-full bg-green-800 p-4 py-6 text-center text-xs text-green-400 md:text-lg">
+        LeadWalnut is a brand of Bizboost Business Solutions LLP.
+      </footer>
+    </>
+  );
+}
