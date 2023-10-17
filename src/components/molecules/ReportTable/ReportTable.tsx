@@ -1,6 +1,6 @@
 import React from "react";
 import { getFieldsStyle } from "@/utils/helpers/getFieldsStyle/getFieldsStyle";
-import { getFormatNumber } from "@/utils/helpers/getFormatNumber/getFormatNumber";
+import { getFormatedNumber } from "@/utils/helpers/getFormatNumber/getFormatNumber";
 
 export type RecordFields = {
   yourScore?: string | number;
@@ -9,13 +9,13 @@ export type RecordFields = {
   Tags: string[];
   Name: string;
 };
-export interface ResponseData {
+export interface ScoreData {
   id: string;
   fields: RecordFields;
 }
 export interface ReportTableProps {
   tableHeader?: string;
-  tableBody: ResponseData[];
+  tableBody: ScoreData[];
   tag: string;
 }
 
@@ -36,7 +36,7 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
                 subTags: item.fields.Name,
               })}
             >
-              {getFormatNumber(item.fields.yourScore || "")}
+              {getFormatedNumber(item.fields.yourScore || "")}
             </td>
             {item?.fields?.yourCompiteiter1 && (
               <td
@@ -48,7 +48,7 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
                   subTags: item.fields.Name,
                 })}
               >
-                {getFormatNumber(item.fields.yourCompiteiter1 || "")}
+                {getFormatedNumber(item.fields.yourCompiteiter1 || "")}
               </td>
             )}
             {item?.fields?.yourCompiteiter2 && (
@@ -61,7 +61,7 @@ export function ReportTable({ tableHeader, tableBody, tag }: ReportTableProps) {
                   subTags: item.fields.Name,
                 })}
               >
-                {getFormatNumber(item.fields.yourCompiteiter2 || "")}
+                {getFormatedNumber(item.fields.yourCompiteiter2 || "")}
               </td>
             )}
           </tr>

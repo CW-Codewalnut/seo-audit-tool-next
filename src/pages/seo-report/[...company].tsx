@@ -4,16 +4,16 @@ import { useRouter } from "next/router";
 import { Banner } from "@/components/atoms/Banner/Banner";
 import { Card } from "@/components/atoms/Card/Card";
 import { Header } from "@/components/atoms/Header/Header";
-import { Spinner } from "@/components/atoms/Spinner/Spinner";
-import { LIST_OF_TECHNICAL_TERMS } from "@/utils/constants/constants";
-import { fetchTableData } from "@/utils/api/airtableEndPoints/airtableEndPoints";
 import { InfoCard } from "@/components/atoms/InfoCard/InfoCard";
-import ScoreCard, { ResponseData } from "./scoreCard";
+import { Spinner } from "@/components/atoms/Spinner/Spinner";
+import { fetchTableData } from "@/utils/api/airtableEndPoints/airtableEndPoints";
+import { LIST_OF_TECHNICAL_TERMS } from "@/utils/constants/constants";
+import ScoreCard, { ScoreData } from "./scoreCard";
 
 export default function Report() {
   const router = useRouter();
-  const [scoreData, setScoreData] = useState<ResponseData[]>();
-  const [companyData, setCompanyData] = useState<ResponseData>();
+  const [scoreData, setScoreData] = useState<ScoreData[]>();
+  const [companyData, setCompanyData] = useState<ScoreData>();
 
   const { company } = router.query;
   const BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
@@ -22,15 +22,14 @@ export default function Report() {
     if (company) {
       fetchTableData(company[0])
         .then((res) => {
-          const companyName = res.data.records.find(
-            (item: ResponseData) => item?.fields?.Tags?.[0] === "CompanyName",
+          const organizationData = res.data.records.find(
+            (item: ScoreData) => item?.fields?.Tags?.[0] === "CompanyName",
           );
 
           setScoreData(res.data.records);
-          setCompanyData(companyName);
+          setCompanyData(organizationData);
         })
         .catch((error) => {
-          // Handle the error
           console.error(error);
         });
     }
@@ -38,7 +37,10 @@ export default function Report() {
 
   return (
     <>
-      <Header companyLogo="/img/LeadwalnutIcon.svg" companyLogoAltText="Company logo" />
+      <Header
+        companyLogo="/img/LeadwalnutIcon.svg"
+        companyLogoAltText="Company logo"
+      />
       <Banner
         bannerUrl="/img/banner-image.webp"
         heading="Website health scorecard"
@@ -60,11 +62,11 @@ export default function Report() {
               >
                 Download Report in PDF{" "}
                 <Image
-                 src="/img/download-icon.svg"
-                 alt="download icon"
-                 className="ml-3"
-                 width={20}
-                 height={20}
+                  src="/img/download-icon.svg"
+                  alt="download icon"
+                  className="ml-3"
+                  width={20}
+                  height={20}
                 />
               </a>
             )}
@@ -76,7 +78,7 @@ export default function Report() {
         <InfoCard listOfTechnicalTerms={LIST_OF_TECHNICAL_TERMS} />
       </div>
       <footer className="w-full bg-green-800 p-4 py-6 text-center text-xs text-green-400 md:text-lg">
-         LeadWalnut is a brand of Bizboost Business Solutions LLP.
+        LeadWalnut is a brand of Bizboost Business Solutions LLP.
       </footer>
     </>
   );

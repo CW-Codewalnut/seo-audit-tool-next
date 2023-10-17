@@ -1,4 +1,4 @@
-export function getFormatNumber(number: number | string) {
+export function getFormatedNumber(number: number | string) {
     const value = Number(number);
     if (value && value >= 1000) {
         const formattedNumber = (value / 1000).toFixed(1);

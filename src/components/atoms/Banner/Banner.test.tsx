@@ -23,7 +23,7 @@ describe("Banner", () => {
     expect(screen.getByText("Main heading")).toBeInTheDocument();
   });
 
-  it("renders with Subheading text", () => {
+  it("renders with subheading  text", () => {
     renderComponent();
     expect(screen.getByText("Dummy Subheading")).toBeInTheDocument();
   });

@@ -1,7 +1,7 @@
 import { TABLE_COLOR } from "@/utils/constants/constants";
 import { getColorBasedOnScore } from "./getColorBasedOnScore";
 
-describe("ColorBasedOnScore", () => {
+describe("getColorBasedOnScore", () => {
   it("should return min color for scores below 30", () => {
     expect(getColorBasedOnScore({ score: 10, fieldType: "cell" })).toBe(
       TABLE_COLOR.min.cell,

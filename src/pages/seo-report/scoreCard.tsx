@@ -9,20 +9,17 @@ type RecordFields = {
   Tags: string[];
   Name: string;
 };
-export interface ResponseData {
+export interface ScoreData {
   id: string;
   fields: RecordFields;
 }
 
 interface ScoreCardProps {
-  scoreData: ResponseData[];
-  companyData?: ResponseData;
+  scoreData: ScoreData[];
+  companyData?: ScoreData;
 }
 
-export default function ScoreCard({
-  scoreData,
-  companyData,
-}: ScoreCardProps) {
+export default function ScoreCard({ scoreData, companyData }: ScoreCardProps) {
   return (
     <>
       <h2 className="font-bold md:text-xl lg:text-4xl">SEO scorecard</h2>

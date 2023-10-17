@@ -2,7 +2,7 @@
 import { TABLE_COLOR } from "@/utils/constants/constants";
 import { getFieldsStyle, FieldsStyleArgs } from "./getFieldsStyle";
 
-describe("FieldsStyle", () => {
+describe("getFieldsStyle", () => {
   const getStyles = (additionalProps?: Partial<FieldsStyleArgs>) => {
     const defaultProps: FieldsStyleArgs = {
       item: { fields: { yourScore: "Yes" } },
